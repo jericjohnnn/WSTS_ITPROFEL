@@ -59,13 +59,13 @@ session_start();
                                                     <!-- LOCK BUTTON -->
     <!-- <br>
     <form method="post" action="lock.php">
-        <input type="hidden" name="aid" value="<?php echo $agent['aid']; ?>"> <button type="submit">Lock</button>
+        <input type="hidden" name="aid" value="<?php //echo $agent['aid']; ?>"> <button type="submit">Lock</button>
     </form>
     <br> -->
 
                                                     <!-- UNLOCK BUTTON -->
     <!-- <form method="post" action="unlock.php">
-        <input type="hidden" name="aid" value="<?php echo $agent['aid']; ?>"> <button type="submit">Unlock</button>
+        <input type="hidden" name="aid" value="<?php //echo $agent['aid']; ?>"> <button type="submit">Unlock</button>
     </form> -->
 
 
