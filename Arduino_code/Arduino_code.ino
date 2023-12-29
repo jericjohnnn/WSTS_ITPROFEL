@@ -94,9 +94,11 @@ void loop() {
 
       } else {
         Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+        errorget();
       }
     } else {
       Serial.printf("[HTTP] Unable to connect\n");
+      errorget();
     }
 
     // GET FUNCTION SHOULD BE HERE
@@ -129,6 +131,7 @@ void loop() {
           Serial.println("Failed to upload values. \n");
           http_post.end();
           http.end();
+          swiped_id = "";  // Empty the swiped_id variable for the next swipe
           return;
         }
 
@@ -167,6 +170,7 @@ void loop() {
           Serial.println("Failed to upload values. \n");
           http_post1.end();
           http.end();
+          swiped_id = "";  // Empty the swiped_id variable for the next swipe
           return;
         }
         // POST REQUEST FUNCTION CODE
@@ -218,4 +222,17 @@ void logoutSound() {
     digitalWrite(green_led, HIGH);
     delay(100);
   }
+}
+
+void errorget(){
+        digitalWrite(red_led, HIGH);  // Turn on the green LED
+        tone(buzzer, 1250);  
+        delay(50);
+        noTone(buzzer);
+        digitalWrite(red_led, LOW);
+        digitalWrite(green_led, HIGH);  // Turn on green LED
+        tone(buzzer, 400); 
+        delay(50); 
+        noTone(buzzer);
+        digitalWrite(green_led, HIGH);
 }
