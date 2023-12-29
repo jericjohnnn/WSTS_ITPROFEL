@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 28, 2023 at 09:24 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Dec 29, 2023 at 09:54 AM
+-- Server version: 10.5.20-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ INSERT INTO `agents` (`aid`, `firstname`, `lastname`, `cid`, `uid`) VALUES
 (1, 'jeric john', 'aligato', '992449819', 1),
 (2, 'ian', 'caballero', '211952514', 2),
 (3, 'jhon', 'diolan', '548152369', 3),
-(5, 'daniel', 'uy', '123456789', 4),
+(5, 'daniel', 'uy', '211952513', 4),
 (7, 'dummy', ' ', '123456788', 5);
 
 -- --------------------------------------------------------
@@ -64,7 +64,7 @@ CREATE TABLE `stations` (
 --
 
 INSERT INTO `stations` (`sid`, `name`, `status`, `aid`) VALUES
-(16, 'station1', 'Available', 2),
+(16, 'station1', 'Available', 1),
 (17, 'station2', 'Available', 7),
 (18, 'station3', 'Available', 7);
 

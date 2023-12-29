@@ -22,15 +22,21 @@ session_start();
     $result = mysqli_query($conn, $get_agent);
     $agent = mysqli_fetch_assoc($result);
 
+    $agentaid = $agent['aid'];
+
     $get_station = "SELECT * FROM stations WHERE aid=" . $agent['aid'];
-    $result = mysqli_query($conn, $get_station);
-    $station = mysqli_fetch_assoc($result);
-
     $hasStation = mysqli_query($conn, $get_station);
+    $station = mysqli_fetch_assoc($hasStation);
 
-    $get_stationinfo = "SELECT * FROM stations JOIN agents ON stations.aid = agents.aid";
+    $get_stationinfo = "SELECT * FROM stations JOIN agents ON stations.aid = agents.aid WHERE agents.aid = '$agentaid' ";
     $result = mysqli_query($conn, $get_stationinfo);
     $stationinfo = mysqli_fetch_assoc($result);
+
+    if(mysqli_num_rows($hasStation) === 0){
+        $stationinfogodz = "";
+    }else{
+        $stationinfogodz = $stationinfo['status'];
+    }
 
     ?>
 
@@ -56,16 +62,16 @@ session_start();
     </div>
     <a href="logout.php">Logout</a>
 
-                                                    <!-- LOCK BUTTON -->
+    <!-- LOCK BUTTON -->
     <!-- <br>
     <form method="post" action="lock.php">
-        <input type="hidden" name="aid" value="<?php //echo $agent['aid']; ?>"> <button type="submit">Lock</button>
+        <input type="hidden" name="aid" value="<?php // echo $agent['aid']; ?>"> <button type="submit">Lock</button>
     </form>
     <br> -->
 
-                                                    <!-- UNLOCK BUTTON -->
+    <!-- UNLOCK BUTTON -->
     <!-- <form method="post" action="unlock.php">
-        <input type="hidden" name="aid" value="<?php //echo $agent['aid']; ?>"> <button type="submit">Unlock</button>
+        <input type="hidden" name="aid" value="<?php // echo $agent['aid']; ?>"> <button type="submit">Unlock</button>
     </form> -->
 
 
@@ -73,14 +79,13 @@ session_start();
 
         <?php
 
-
         $get_stationinfo = "SELECT * FROM stations JOIN agents ON stations.aid = agents.aid";
         $result = mysqli_query($conn, $get_stationinfo);
 
         while ($row = mysqli_fetch_assoc($result)) {
             // Access and display information from both tables:
             echo "<br>";
-            
+
             $station_name = $row["name"];
             $stationaid = $row['aid'];
             echo "Station Name: " . $row['name'] . "<br>";
@@ -89,7 +94,7 @@ session_start();
 
             if ($row['status'] == "Available") {
                 // BUTTON FOR USE STATION
-                if ($agent["aid"] == $stationaid && $station['name'] == $station_name) {
+                if ($agent["aid"] == $stationaid && $station['name'] == $station_name || $stationinfogodz == 'Unavailable') {
                     echo "";
                 } else {
                     echo '<form method="post" action="usestation.php">';
@@ -109,6 +114,6 @@ session_start();
 
     </div>
 
-    </body>
+</body>
 
 </html>
