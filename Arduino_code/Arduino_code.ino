@@ -5,11 +5,11 @@
 #include <MFRC522.h>
 
 // DEFINE THE WEBSITE TO BE CONNECTED
-#define HOST "itprofel.000webhostapp.com"  // Enter HOST URL without "http:// "  and "/" at the end of URL
+#define HOST ""  // Enter HOST URL without "http:// "  and "/" at the end of URL
 
 // DEFINE THE WIFI TO BE CONNECTED BY ESP8266
-#define WIFI_SSID "Twitter"                 // WIFI SSID here
-#define WIFI_PASSWORD "kimetsunoyaiba5301"  // WIFI password here
+#define WIFI_SSID ""                 // WIFI SSID here
+#define WIFI_PASSWORD ""  // WIFI password here
 
 // CONSTANT EXPRESSION FOR ESP8266 PINS
 constexpr uint8_t RST_PIN = D3;  // Configurable, see typical pin layout above
@@ -81,7 +81,7 @@ void loop() {
     HTTPClient http;     // http object of class HTTPClient
     WiFiClient wclient;  // wclient object of class WiFiClient
 
-    http.begin(wclient, "http://itprofel.000webhostapp.com/dbwrite.php");  // CHANGE DBWRITE.PHP IF FILE NAME IS CHANGED OR MOVED
+    http.begin(wclient, "");  // CHANGE DBWRITE.PHP IF FILE NAME IS CHANGED OR MOVED
     int httpCode = http.GET();
    
 
@@ -117,7 +117,7 @@ void loop() {
 
         postData = "swiped_id=" + swiped_id;  // "if_loggedin=" IS THE NAME, + if_loggedin is the value
 
-        http_post.begin(wclient, "http://itprofel.000webhostapp.com/unlock.php");  // Connect to host where MySQL databse is hosted
+        http_post.begin(wclient, "");  // Connect to host where MySQL databse is hosted
         http_post.addHeader("Content-Type", "application/x-www-form-urlencoded");       //Specify content-type header
 
         int httpCode = http_post.POST(postData);  // Send POST request to php file and store server response code in variable named httpCode
@@ -155,7 +155,7 @@ void loop() {
 
         // Update Host URL here:-
 
-        http_post1.begin(wclient, "http://itprofel.000webhostapp.com/lock.php");  // Connect to host where MySQL databse is hosted
+        http_post1.begin(wclient, "");  // Connect to host where MySQL databse is hosted
         http_post1.addHeader("Content-Type", "application/x-www-form-urlencoded");       //Specify content-type header
 
         int httpCode1 = http_post1.POST(postData1);  // Send POST request to php file and store server response code in variable named httpCode
