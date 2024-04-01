@@ -6,8 +6,8 @@
 
 $host = "localhost";                  // host = localhost because the database is hosted on the same server where PHP files are hosted
 $dbname = "id21695599_projdb";        // Database name
-$username = "id21695599_projuser";    // Database username
-$password = "Itprofelproject2023.";   // Database password
+$username = "";    // Database username
+$password = "";   // Database password
 
 // Establish connection to MySQL database
 $conn = new mysqli($host, $username, $password, $dbname);
