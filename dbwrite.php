@@ -2,7 +2,7 @@
 
 include 'dbconnect.php'; // connect to database
 
-$station_name = 'station1'; // you can change this to any station
+$station_name = 'station1'; // you can change this to any station. SINCE WE ONLY HAVE 1 SCANNER, STATION 1 WAS THE ONLY ONE ASSIGNED
 
 $get_stationinfo = "SELECT * FROM stations WHERE name = '$station_name'";
 $result = mysqli_query($conn, $get_stationinfo);
